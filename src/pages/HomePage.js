@@ -93,9 +93,11 @@ export const HomePage = () => {
         event.preventDefault();
         addpost().then(data => {
             let allposts = [...posts]
-            allposts.unshift(data)
+            let datacopy = {...data}
+            datacopy.userid = { userid: data.userid, name: user.name, email: user.email }
+            allposts.unshift(datacopy)
             setPosts(allposts)
-          console.log(data)
+          console.log(datacopy)
         })
       }
 
